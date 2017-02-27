@@ -1,4 +1,4 @@
-shell_downloader README
+#!/bin/sh
 
 ######################################################################
 ################# Shell downloader using wget ########################
@@ -9,3 +9,11 @@ shell_downloader README
 ##		   script is located.
 ## Example: wget_dwn_script https://examplesite.com/ /apps/mnt/downloads/
 ######################################################################
+url=$1;
+shift;
+destdir=$1;
+shift;
+if [[ -z $destdir ]] then
+destdir=.
+fi
+wget -A pdf,v -m -p -E -k -K -np $url -P $destdir;
